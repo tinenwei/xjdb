@@ -12,14 +12,14 @@ For now, xjdb is developed in linux. In the future, it will also target in windo
 
 Install
 =============
-Install prerequisite for linux : libreadline6-dev packages.
+Install prerequisite for linux : libreadline6-dev packages.  
 You must set the JAVA_HOME environment variable 
 to point to the JDK installation directory 
 or modify the JAVA_HOME of Makefile.
 
 The command for installing is :
 
-    make instal
+    make install
 
 The default installed directory is "/usr/lib/xjdb".
 You can set prefix for your desired path: 
