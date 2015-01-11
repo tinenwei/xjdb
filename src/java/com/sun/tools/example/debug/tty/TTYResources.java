@@ -628,7 +628,7 @@ public class TTYResources extends java.util.ListResourceBundle {
             "\n"+
             "*backtrace:\n"+
             "  backtrace 	=> same as where. list call stacks.\n"+
-            "  backtrac /num	=> show the top num frames.\n"+
+            "  backtrace /num	=> show the top num frames.\n"+
             "\n"+
             "  abbreviation: bt\n"+
             "\n"+
@@ -662,8 +662,8 @@ public class TTYResources extends java.util.ListResourceBundle {
             "  setp scrollsize size  => number of lines scrolled by PageUp/PageDown\n"+
             "  setp autosavebreak true/false\n"+
             "			=> when using quit to exit xjdb, if save breakpoints\n"+
-            "  setp pagemode on/off  => PageUp/PageDown use pages or scrollsize \n"+
-            "			   (F11 key to switch page mode)\n"+
+            "  setp pagemode on/off  => use PageUp/PageDown keys to scroll by pages or lines \n"+
+            "			   (use F11 key to switch page mode)\n"+
             "  setp port num 	=> There is socket server in xjdb \n"+
             "			   and it can receive message to enter command.\n"+
             "			   This set port number of socket server.\n"+
