@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hotspot_log version='160 1' process='8546' time_ms='1377589695776'>
+<vm_version>
+<name>
+Java HotSpot(TM) 64-Bit Server VM
+</name>
+<release>
+19.0-b09-fastdebug
+</release>
+<info>
+Java HotSpot(TM) 64-Bit Server VM (19.0-b09-fastdebug) for linux-amd64 JRE (1.6.0_23-ea-fastdebug-b03), built on Oct 18 2010 14:23:14 by &quot;java_re&quot; with gcc 3.2.2 (SuSE Linux)
+</info>
+</vm_version>
+<vm_arguments>
+<args>
+-Dapplication.home=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23 -Xms8m -Xss4m -ea:com.sun.tools... 
+</args>
+<command>
+com.sun.tools.javac.Main -g -d ../build ./org/gnu/readline/ReadlineReader.java ./org/gnu/readline/Readline.java ./org/gnu/readline/ReadlineLibrary.java ./org/gnu/readline/BindKeyHandler.java ./org/gnu/readline/ReadlineCompleter.java ./test/TestCompleter.java ./test/ReadlineTest.java
+</command>
+<launcher>
+SUN_STANDARD
+</launcher>
+<properties>
+java.vm.specification.version=1.0
+java.vm.specification.name=Java Virtual Machine Specification
+java.vm.specification.vendor=Sun Microsystems Inc.
+java.vm.version=19.0-b09-fastdebug
+java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+java.vm.vendor=Sun Microsystems Inc.
+java.vm.info=mixed mode, sharing
+java.ext.dirs=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/ext:/usr/java/packages/lib/ext
+java.endorsed.dirs=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/endorsed
+sun.boot.library.path=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/amd64
+java.library.path=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/amd64/server:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/amd64:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java.home=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre
+java.class.path=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/lib/tools.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/classes
+sun.boot.class.path=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/resources.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/rt.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/sunrsasign.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/jsse.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/jce.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/charsets.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/classes
+application.home=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23
+sun.java.launcher=SUN_STANDARD
+</properties>
+</vm_arguments>
+<tty>
+<writer thread='46961911666432'/>
+<writer thread='46961608664832'/>
+<writer thread='46961911666432'/>
+<writer thread='46961608664832'/>
+<writer thread='46961911666432'/>
+<writer thread='46961608664832'/>
+<writer thread='46961911666432'/>
+<writer thread='46960644380416'/>
+<statistics type='opto'>
+--- Compiler Statistics ---
+Methods seen: 597  Methods parsed: 597  Nodes created: 148172
+Blocks parsed: 2383  Blocks seen: 2565
+2630 original NULL checks - 2096 elided (79%); optimizer leaves 558,
+386 made implicit (69%)
+CCP: 99  constants found: 0
+Total frameslots = 684, Max frameslots = 32
+Inserted 0 spill loads, 0 spill stores, 0 mem-mem moves and 0 copies.
+Total load cost=      0, store cost =      0, mem-mem cost =  0.00, copy cost =     0.
+Adjusted spill cost =       0.
+Conservatively coalesced 554 copies, 0 pairs, 1536 post alloc.
+Used cisc instruction  106,  remained in register 1203
+Average allocation trips 1.607143
+High Pressure Blocks = 0, Low Pressure Blocks = 0
+Nops added 0 bytes to total of 92621 bytes, for 0.00%
+Peephole: peephole rules applied: 0
+PhaseIdealLoop=358, sum _unique=391156
+</statistics>
+<statistics type='intrinsic'>
+Compiler intrinsic usage:
+     2 ( 2.6%) _hashCode (worked,virtual)
+     4 ( 5.3%) _getClass (worked)
+     3 ( 3.9%) _min (worked)
+    10 (13.2%) _arraycopy (worked)
+     3 ( 3.9%) _currentThread (worked)
+    46 (60.5%) _compareTo (worked)
+     8 (10.5%) _equals (worked)
+    76 (100.0%) total (worked,virtual)
+</statistics>
+<statistics type='deoptimization'>
+Deoptimization traps recorded:
+    17 (100.0%) total
+  class_check/maybe_recompile/invokevirtual: 8 (47.1%)
+       array_check/maybe_recompile/aastore: 4 (23.5%)
+   bimorphic/maybe_recompile/invokevirtual: 4 (23.5%)
+              unreached/reinterpret/ifnull: 1 (5.9%)
+</statistics>
+<statistics type='nmethod'>
+Statistics for 3 native nmethods:
+ N. total size  = 3176
+ N. relocation  = 328
+ N. main code   = 1912
+Statistics for 98 bytecoded nmethods:
+ total in heap  = 281768
+ relocation     = 13144
+ main code      = 92480
+ stub code      = 5711
+ constants      = 1337
+ oops           = 4120
+ scopes data    = 41312
+ scopes pcs     = 82144
+ dependencies   = 928
+ handler table  = 7968
+ nul chk table  = 2280
+Debug Data Chunks: 10072, shared 1295+3473, non-SP&apos;s elided 34
+PcDesc Statistics:  353 queries, 16.37 comparisons per query
+  caches=98 queries=353/0, hits=0+30, tests=1824+3956, adds=323
+</statistics>
+<statistics type='SharedRuntime'>
+   78 new instance requires GC
+   17 new array requires GC
+    3 inline cache miss in compiled
+    0 wrong method
+   16 unresolved static call site
+    4 unresolved virtual call site
+   36 unresolved opt virtual call site
+  652 slow partial subtype
+   12 byte array copies
+  530 short array copies
+   12 int array copies
+   12 long array copies
+AdapterHandlerTable: empty 159 longest 3 total 163 average 1.216418
+AdapterHandlerTable: lookups 9467 buckets 10751 equals 9310 hits 9304 compact 9304
+</statistics>
+<tty_done stamp='1.758'/>
+</tty>
+<hotspot_log_done stamp='1.759'/>
+</hotspot_log>

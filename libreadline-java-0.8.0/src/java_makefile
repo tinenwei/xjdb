@@ -1,0 +1,49 @@
+#usage:
+# OUTPUT_DIR for classes path
+# CLASS_PATH for library path
+# SOURCE_DIR for sources path
+
+#Location of trees.
+SOURCE_DIR	:= ./src/main/java
+OUTPUT_DIR	:= ./bin
+#JAVA_DIR	:= ./src/main/java
+ALL_JAVAS	:= $(shell cd $(SOURCE_DIR);find . -name '*.java')
+ALL_CLASSES	:= $(addprefix $(OUTPUT_DIR),		\
+			$(patsubst ./%,/%,		\
+			  $(ALL_JAVAS:.java=.class)))
+
+
+# Linux tools
+FIND	:= /usr/bin/find
+MKDIR	:= mkdir -p
+RM	:= rm -rf
+
+# Java tools
+JAVA		:= java
+JAVAC		:= javac
+
+JFLAGS		:= -sourcepath $(SOURCE_DIR) 	\
+	   	   -d $(OUTPUT_DIR)		\
+		   -g 				\
+	   	   -classpath $(CLASS_PATH)	
+
+
+.PHONY: all clean create_dir
+all : create_dir $(ALL_CLASSES)
+
+create_dir :
+	@if [ ! -d $(OUTPUT_DIR) ]; then \
+	mkdir -p $(OUTPUT_DIR); \
+	fi
+
+$(OUTPUT_DIR)/%.class : $(SOURCE_DIR)/%.java	
+	$(JAVAC) $(JFLAGS) $<
+
+#$(OUTPUT_DIR)/%.class : %.java
+#	@ant -f ./build.xml -Dbasedir=$(BASE_DIR) -Ddir.classes=$(CLASS_PATH) \
+#	-Ddir.build=$(OUTPUT_DIR) -Ddir.src=$(SOURCE_DIR)
+	
+clean:
+	if [ -d $(OUTPUT_DIR) ]; then \
+	rm -rf $(OUTPUT_DIR); \
+	fi

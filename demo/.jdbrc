@@ -1,0 +1,7 @@
+stop at XJdbTest:23
+stop at XJdbTest:28 {p "precommand:"+testStr}
+stop at XJdbTest:29 {if testStr=="abc"@r'main'}
+stop at XJdbTest:36
+stop at XJdbTest:17
+stop at XJdbTest:15
+stop at XJdbTest:48 {if testNull==null}

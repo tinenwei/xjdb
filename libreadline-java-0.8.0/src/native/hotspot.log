@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hotspot_log version='160 1' process='8589' time_ms='1377589698053'>
+<vm_version>
+<name>
+Java HotSpot(TM) 64-Bit Server VM
+</name>
+<release>
+19.0-b09-fastdebug
+</release>
+<info>
+Java HotSpot(TM) 64-Bit Server VM (19.0-b09-fastdebug) for linux-amd64 JRE (1.6.0_23-ea-fastdebug-b03), built on Oct 18 2010 14:23:14 by &quot;java_re&quot; with gcc 3.2.2 (SuSE Linux)
+</info>
+</vm_version>
+<vm_arguments>
+<args>
+-Dapplication.home=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23 
+</args>
+<command>
+com.sun.tools.javah.Main -classpath ../../build -jni org.gnu.readline.Readline
+</command>
+<launcher>
+SUN_STANDARD
+</launcher>
+<properties>
+java.vm.specification.version=1.0
+java.vm.specification.name=Java Virtual Machine Specification
+java.vm.specification.vendor=Sun Microsystems Inc.
+java.vm.version=19.0-b09-fastdebug
+java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+java.vm.vendor=Sun Microsystems Inc.
+java.vm.info=mixed mode, sharing
+java.ext.dirs=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/ext:/usr/java/packages/lib/ext
+java.endorsed.dirs=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/endorsed
+sun.boot.library.path=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/amd64
+java.library.path=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/amd64/server:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/amd64:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java.home=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre
+java.class.path=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/lib/tools.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/classes
+sun.boot.class.path=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/resources.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/rt.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/sunrsasign.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/jsse.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/jce.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/charsets.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23/jre/classes
+application.home=/usr/lib/jvm/home_jdk1.6.0_23/debug_jdk1.6.0_23
+sun.java.launcher=SUN_STANDARD
+</properties>
+</vm_arguments>
+<tty>
+<writer thread='47779230521088'/>
+<writer thread='47778918082304'/>
+<writer thread='47779230521088'/>
+<writer thread='47778918082304'/>
+<writer thread='47779230521088'/>
+<writer thread='47778918082304'/>
+<writer thread='47779230521088'/>
+<writer thread='47778918082304'/>
+<writer thread='47777987327744'/>
+<dependency_failed type='abstract_with_unique_concrete_subtype' ctxk='java/nio/charset/Charset' x='sun/nio/cs/UTF_8' witness='sun/nio/cs/ISO_8859_1' stamp='1.098'/>
+<dependency_failed type='abstract_with_unique_concrete_subtype' ctxk='java/nio/charset/Charset' x='sun/nio/cs/UTF_8' witness='sun/nio/cs/ISO_8859_1' stamp='1.098'/>
+<dependency_failed type='abstract_with_unique_concrete_subtype' ctxk='java/nio/charset/Charset' x='sun/nio/cs/UTF_8' witness='sun/nio/cs/ISO_8859_1' stamp='1.098'/>
+<dependency_failed type='abstract_with_unique_concrete_subtype' ctxk='java/nio/charset/Charset' x='sun/nio/cs/UTF_8' witness='sun/nio/cs/ISO_8859_1' stamp='1.098'/>
+<dependency_failed type='abstract_with_unique_concrete_subtype' ctxk='java/nio/charset/CharsetDecoder' x='sun/nio/cs/UTF_8$Decoder' witness='sun/nio/cs/ISO_8859_1$Decoder' stamp='1.099'/>
+<dependency_failed type='abstract_with_unique_concrete_subtype' ctxk='java/nio/charset/CharsetDecoder' x='sun/nio/cs/UTF_8$Decoder' witness='sun/nio/cs/ISO_8859_1$Decoder' stamp='1.099'/>
+<dependency_failed type='abstract_with_unique_concrete_subtype' ctxk='java/nio/charset/CharsetDecoder' x='sun/nio/cs/UTF_8$Decoder' witness='sun/nio/cs/ISO_8859_1$Decoder' stamp='1.099'/>
+<dependency_failed type='abstract_with_unique_concrete_subtype' ctxk='java/nio/charset/CharsetDecoder' x='sun/nio/cs/UTF_8$Decoder' witness='sun/nio/cs/ISO_8859_1$Decoder' stamp='1.099'/>
+<dependency_failed type='abstract_with_unique_concrete_subtype' ctxk='java/nio/charset/CharsetDecoder' x='sun/nio/cs/UTF_8$Decoder' witness='sun/nio/cs/ISO_8859_1$Decoder' stamp='1.099'/>
+<writer thread='47779230521088'/>
+<writer thread='47777987327744'/>
+<statistics type='opto'>
+--- Compiler Statistics ---
+Methods seen: 485  Methods parsed: 486  Nodes created: 112617
+Reasons for parse failures (NOT cumulative):
+Blocks parsed: 1746  Blocks seen: 1928
+1881 original NULL checks - 1438 elided (76%); optimizer leaves 453,
+329 made implicit (72%)
+CCP: 75  constants found: 0
+Total frameslots = 532, Max frameslots = 32
+Inserted 0 spill loads, 0 spill stores, 0 mem-mem moves and 0 copies.
+Total load cost=      0, store cost =      0, mem-mem cost =  0.00, copy cost =     0.
+Adjusted spill cost =       0.
+Conservatively coalesced 280 copies, 0 pairs, 1428 post alloc.
+Used cisc instruction  97,  remained in register 864
+Average allocation trips 1.568182
+High Pressure Blocks = 0, Low Pressure Blocks = 0
+Nops added 0 bytes to total of 67350 bytes, for 0.00%
+Peephole: peephole rules applied: 0
+PhaseIdealLoop=251, sum _unique=287811
+</statistics>
+<statistics type='intrinsic'>
+Compiler intrinsic usage:
+     1 ( 1.4%) _hashCode (worked,virtual)
+     4 ( 5.6%) _getClass (worked)
+     3 ( 4.2%) _min (worked)
+     8 (11.1%) _arraycopy (worked)
+     3 ( 4.2%) _currentThread (worked)
+    46 (63.9%) _compareTo (worked)
+     7 ( 9.7%) _equals (worked)
+    72 (100.0%) total (worked,virtual)
+</statistics>
+<statistics type='deoptimization'>
+Deoptimization traps recorded:
+    15 (100.0%) total
+  class_check/maybe_recompile/invokevirtual: 8 (53.3%)
+       array_check/maybe_recompile/aastore: 4 (26.7%)
+         unloaded/reinterpret/invokestatic: 2 (13.3%)
+              unreached/reinterpret/ifnull: 1 (6.7%)
+</statistics>
+<statistics type='nmethod'>
+Statistics for 3 native nmethods:
+ N. total size  = 3176
+ N. relocation  = 328
+ N. main code   = 1912
+Statistics for 74 bytecoded nmethods:
+ total in heap  = 196088
+ relocation     = 8576
+ main code      = 66816
+ stub code      = 3700
+ constants      = 308
+ oops           = 3344
+ scopes data    = 28560
+ scopes pcs     = 54336
+ dependencies   = 712
+ handler table  = 5112
+ nul chk table  = 1744
+Debug Data Chunks: 7401, shared 976+2777, non-SP&apos;s elided 17
+PcDesc Statistics:  159 queries, 14.44 comparisons per query
+  caches=74 queries=159/0, hits=0+13, tests=725+1571, adds=146
+</statistics>
+<statistics type='SharedRuntime'>
+   19 new instance requires GC
+    6 new array requires GC
+    1 inline cache miss in compiled
+    0 wrong method
+   13 unresolved static call site
+    1 unresolved virtual call site
+   30 unresolved opt virtual call site
+  633 slow partial subtype
+   12 byte array copies
+   12 short array copies
+   12 int array copies
+   12 long array copies
+AdapterHandlerTable: empty 159 longest 4 total 161 average 1.201493
+AdapterHandlerTable: lookups 8849 buckets 9670 equals 8693 hits 8688 compact 8688
+</statistics>
+<writer thread='47778906654464'/>
+<destroy_vm stamp='1.255'/>
+<tty_done stamp='1.411'/>
+</tty>
+<hotspot_log_done stamp='1.411'/>
+</hotspot_log>

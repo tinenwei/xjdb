@@ -1,0 +1,273 @@
+** xjdb command list **
+*break:
+  break classId.method [ {condition} ]	=> set a breakpoint in a method 
+  break classId:num [ {condition} ]	=> set a breakpoint at a line number of classId
+  break num [ {condition} ]		=> set a breakpoint at a line number of current class
+  break					=> the information of breakpoints
+
+  {condition}	
+    - {if expr} 
+      if expr is true ,then break;
+    - {display variable} or {p variable} 
+      break to display variable and continue execution;
+    - {display location} or {p loc} 
+      break to display location and continue execution 
+      for display location or loc variable, use (location) or (loc).
+    - {bt depth} 
+      break to display backtrace with depth (-1 mean max) and continue execution;
+    - {bt depth method} 
+      break if method name in depth (-1 mean comparing all) equals 'method'; 
+    - {thread tname} 
+      break only if thread name is tname;
+    - {if expr@tname} {p variable@tname} or { bt depth@tname} 
+      condition works if thread name is tname;
+    - tname is thread name and tname can contain spaces 
+      but leading space and tailing space.
+      tname can use regular expression with "@r'tname'". 
+    - {count num} 
+      break until hits >= num.
+    - {script script_expr} or {s script_expr} 
+      break to execute script_expr. 
+      script_expr can be a expression or 
+      a script function defined in .jdbrc.js or .jdbrc.py.
+      The script_expr can return a value that tell xjdb if program continues or not.
+      If the value is converted true, then xjdb will stop.
+      If script_expr doesn't return a value, the default is false.
+
+  abbreviation: b
+
+*tbreak:
+  tbreak is same as break but it is temporary. 
+  when breakpoint is hit, it will be deleted.
+
+  abbreviation: tb
+
+*watch:
+  watch classId.field [ {condition} ]	=> add a watchpoint to classId.field
+  watch this.field [ {condition} ]	=> add a watchpoint to the field of current class
+
+  abbreviation: wa
+
+*twatch:
+  twatch is same as watch but it is temporary.
+  when watchpoint is hit, it will be deleted.
+ 
+  abbreviatino: twa
+
+*condition:
+  condition num {condition}	=> add a condition to breakpoint number
+  condition !!  {condition}	=> add a condition to the last breakpoint
+  condition num			=> clear condition of breakpoint number
+
+  abbreviation: cond
+
+*temporary:
+  temporary			=> make all breakpoints temporary
+  temporary num			=> make specified breakpoint number temporary
+  temporary !!			=> make the last breakpoint temporary
+  temporary num1-num2		=> make breakpoint num1-num2 temporary
+  temporary num1, num2 ...	=> make breakpoint num1 num2 ... temporary
+
+  abbreviation: temp
+
+*delete:
+  delete		=> delete all breakpoints
+  delete num		=> delete specified breakpoint number
+  delete !!		=> delete the last breakpoint
+  delete num1-num2	=> delete between num1-num2
+  delete num1 num2 ...	=> delete num1 num2 ... 
+
+  abbreviation: d
+
+*disable:
+  disable		=> disable all breakpoints
+  disable num		=> disable specified breakpoint number
+  disable !!		=> disable the last breakpoint    
+  disable num1-num2	=> disable between num1-num2
+  disable num1 num2 ...	=> disable num1 num2 ...     
+
+  abbreviation: dis
+
+*enable:
+  enable		=> enable all
+  enable num		=> enable specified breakpoint number
+  enable !!		=> enable the last breapoint
+  enable num1-num2	=> enable between num1-num2
+  enable num1 num2 ...	=> enable num1 num2 ... 
+
+  abbreviation: en
+
+*command:
+  command num cmdline	=> add a command to breakpoint number
+  command !! cmdline	=> add a command to the last breakpoint
+  command num		=> clear command list of breakpoint number
+    
+  abbreviation: co
+
+*listcommand:
+  listcommand num	=> show commands of breakpoint number
+  listcommand !!	=> show commands of the last breakpoint
+
+  abbreviation: lc
+
+*print:
+  print expr		=> asynchronous print
+  eprint expr		=> asynchronous print and donesn't show "expr="
+  prints expr		=> synchronous print
+  eprints expr		=> synchronous print and donesn't show "expr="
+
+  prints and eprints are suitable for breakpoint command to 
+  show variable while keeping execution.
+
+  abbreviation: print(p), eprint(ep), prints(ps), eprints(eps)
+
+*dump:
+  dump /s expr	=> dump by using string format
+  dump /x expr  => dump by using hex format
+  dump /a expr  => dump by using ascii
+  
+  abbreviation; du
+   
+*script:
+  script <script string>	=> execute script string
+
+  abbreviation: scr
+
+*scriptread:
+  scriptread <script file>	=> read script file and execute
+
+  abbreviation: sr
+
+*methods:
+  methods 				=> list all methods of classId
+  methods classId b(tb) [ {condition} ]	=> (temporary) break all methods of classId
+  methods this b(tb) [ {condition} ]	=> (temporary) break all methods of current class 
+
+  abbreviation: mt
+
+*redefine:
+  redefine classId [<the path of class file>]
+  ex:
+    redefine java.io.File  [<path>/File.class]
+    If [<the path of class file>] doesn't exist, 
+    this will reload class from path or xpath.
+    If reloading classes from path or xpath, 
+    it will also search anonymous classes and inner classes
+
+  abbreviation: red
+
+*use:
+  use		=> print source path
+  use <file>	=> read the content of file and use the content as source path. 
+		The content must use file separator to separate respective path
+		ex path1:path2:path3
+  use <path>	=> use path as as source path
+  uses <file>	=> same as 'use <file>' but append to existed source path
+  uses <path>	=> same as 'use <path>' but append to existed source path
+
+  alias: sourcepath, sourcepaths
+
+*history:
+  history num	=> use the command of history number
+  history clear => clear history
+  history	=> list histroy
+
+  abbreviation: h
+
+*write:
+  write		=> write all breakpoints to user.dir's .jdbrc
+  write <file>	=> write all breakpints to <file>
+
+  abbreviation: w
+
+*writea:
+  same as write but append to <file>
+
+  abbreviation: wa
+
+*moinitor, unmonitor:
+  monitor command	=> monitor command (refer help)
+  unmonitor num		=> unmonitor number of command
+
+  abbreviation: monitor(m), unmonitor(um)
+
+*frame:
+  frame		=> jump to top frame
+  frame num 	=> jump to frame number
+
+  abbreviation: f
+
+*backtrace:
+  backtrace 	=> same as where. list call stacks.
+  backtrac /num	=> show the top num frames.
+
+  abbreviation: bt
+
+*finish:
+  same as step up command.
+  execute until the current method returns to its caller
+
+  abbreviation: fin
+
+*socketsend:
+	socketsend ip_address port message
+
+  abbreviation: ss
+
+*syscommand:
+	syscommand cmd	=> execute "cmd" system command
+
+  abbreviation: sc
+
+*thread:
+  thread #index
+
+  The command is same as original thread command (refer help).
+  But use thread #index to quickly set default thread.
+
+  abbrevation: th
+
+*setp:
+  setp			=> show preferences
+  setp listsize num	=> when listing source code, listsize is number of lines shown
+  setp scrollsize size  => number of lines scrolled by PageUp/PageDown
+  setp autosavebreak true/false
+			=> when using quit to exit xjdb, if save breakpoints
+  setp pagemode on/off  => PageUp/PageDown use pages or scrollsize 
+			   (F11 key to switch page mode)
+  setp port num 	=> There is socket server in xjdb 
+			   and it can receive message to enter command.
+			   This set port number of socket server.
+
+The following commands are commands in internal script:
+
+*nextnext:
+  nextnext linenum	=> Jump to line number
+
+  abbreviation: nn
+
+*breakbreak:
+  breakbreak		=> add a breakpoint to current line
+
+  abbreviation: bb
+
+*breakonly: 
+  breakonly breakpstr	=> add a breakpoint and disable the other breakpoints
+
+  abbreviation: bo
+
+*enableonly:
+  enableonly num	=> enable only breakpoint number 
+			   and disable the other breakpoints
+
+  abbreviation: eo
+
+*monitorprint:
+  monitorprint expr	=> monitor and print expr
+  
+  abbreviation: mp
+
+
+Startup script can be placed in either ".jdbrc.js" or ".jdbrc.py" 
+in user.home or user.dir
+

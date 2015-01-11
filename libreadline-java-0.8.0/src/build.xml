@@ -1,0 +1,28 @@
+<project name="ant-depend" default="compile" basedir=".">  
+  
+<property name="dir.src" value="src"/>  
+<property name="dir.build" value="build"/>  
+<property name="dir.classes" value="build"/>  
+  
+<target name="init" description="initialise directory structure">  
+    <mkdir dir="${dir.build}"/>  
+</target>  
+  
+<target name="clean" description="remove generated files">  
+    <delete dir="${dir.build}"/>  
+    <delete dir="depcache"/>  
+</target>  
+  
+<target name="compile" depends="init" description="compile source code">  
+    <depend srcdir="${dir.src}" destdir="${dir.build}" cache="depcache">   
+        <include name= "**/*.java"/>   
+    </depend>
+    <javac destdir="${dir.build}" debug="yes">  
+        <src path="${dir.src}"/>  
+	<classpath>
+	  <pathelement path="${dir.classes}"/>
+	</classpath>
+    </javac>  
+</target>  
+  
+</project> 

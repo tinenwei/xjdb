@@ -1,0 +1,14 @@
+PROGNAME=`basename $0` 
+PROGDIR=`dirname $0`
+
+SCRIPT_JAR=${PROGDIR}/./js.jar 
+
+if [ ! -f $SCRIPT_JAR ]; then
+	SCRIPT_JAR=${PROGDIR}/./jython-2.5.3.jar
+fi
+
+if [ "$COMSPEC" != "" ]; then
+java -Djava.library.path=${PROGDIR}/. -classpath ${PROGDIR}/./xjdb.jar:$SCRIPT_JAR com.sun.tools.example.debug.tty.TTY "$@" 
+else
+java -Djava.library.path=${PROGDIR}/. -classpath ${PROGDIR}/./xjdb.jar:$SCRIPT_JAR com.sun.tools.example.debug.tty.TTY "$@" 
+fi

@@ -1,0 +1,206 @@
+The API names of javacript and jython are almost the same.
+But for some APIs they have differences. The description will indicate this.
+
+
+$('expr')	: return the result of executing java expression for javascript:
+e('expr')	: return the result of executing java expression for jython.
+
+_('cmd')  	: execute jdb command and print result in console
+__('cmd') 	: execute jdb command and return the string of result.
+_c('cmd')	: execute jdb command.
+		  If command is defined in script, then pass script command 
+		  and execute the internal command.
+__c('cmd')  : same as _c('cmd') but return the string of result.	
+_p('str')	: print string with newline
+__p('str') 	: print string without newline 
+load('script_file_path') : load other script file.
+syscmd('cmd') 	: execute system command and return the string of result.
+
+
+* StackFrames:
+     This is valid when stopping at a breakpoint.
+     Use StackFrames to get current stack frames.
+
+	 ex:	 
+		 var stf = new StackFrames()  => get current stack frames
+		 stf.frameslist
+		 stf.frameslist.length
+
+	 The property of frame: 	 
+		 stf.frameslist[index].id 
+		 stf.frameslist[index].location 
+		 stf.frameslist[index].file 
+		 
+	The methods:		 
+		 stf.getById(id)        => get frame by id
+		 stf.get(index)	 	=> get frame by index 
+		 stf.size() 		=> frameslist size
+	 
+	 
+	 stf[index] is equal to stf.frameslist[index] 
+	 Therefore, you can also use :
+	 stf[index].id, stf[index].location and stf[index].file
+
+
+* BreakPoints:
+	Use BreakPoints to get current breakpoints.
+
+	ex:
+		var bps = new BreakPoints()  => get current breakpoints
+		bps.breakpointslist
+		bps.breakpointslist.length
+
+	The property of breakpoint: (id is not all same as index)
+	
+		bps.breakpointslist[index].temporary 
+		bps.breakpointslist[index].enable 
+		bps.breakpointslist[index].resolve 
+		bps.breakpointslist[index].cmdstatus 
+		bps.breakpointslist[index].breakpoint 
+		bps.breakpointslist[index].condition 
+		bps.breakpointslist[index].hits
+		
+	The methods:
+		bps.getById(id)   	 => get breakpoints by id
+		bps.get(index)	 	 => get breakpoints by index 
+		bps.size() 		 => breakpoints size
+	
+	bps[index] is equal to bps.breakpointslist[index]
+	Therefore, you can also use :
+	bps[index].temporary, bps[index].enable, etc.
+
+
+* addBreakPoint(breakpstr, func, en, temp):
+    Add a breakpoint for executing script.
+
+    parameters:
+		breakpstr : string of breakpoint
+		func : While stopping at a breakpoint, func will be executed, 			   
+			   func(bp, id, threadName): 
+				   bp =>
+						bp.temporary  : the temp value when executing addBreakPoint.
+						bp.enable	  : the en value when executing addBreakPoint.
+						bp.breakpoint : breakpstr
+						bp.eventType  : "breakpoint"
+				   id => Assigned id of breakpoint
+				   threadName => The name of the thread which are stopping at this breakpoint
+			   
+			   bp.temporay and bp.enable may be incorrect.			   
+			   Because they can be changed in the code of java code.
+		en 	 : The default is true.
+		temporay : The default is false.
+	
+	return id if success. Otherwise, return -1.
+
+* addWatchPoint(breakpstr, func, en, temp):
+	Add a watchpoint for executing script.
+
+	parameters:
+		breakpstr : string of watchpoint
+		func : While stopping at a breakpoint, func will be executed, 			   
+			   func(bp, id, field, curVal, tobeVal, threadName): 
+				   bp =>
+						bp.temporary  : the temp value when executing addWatchPoint.
+						bp.enable	  : the en value when executing addWatchPoint.
+						bp.breakpoint : breakpstr
+						bp.eventType  : "watchpoint"
+				   id => Assigned id of watchpoint
+				   field => The watched filed.
+				   curVal => current value.
+				   tobeVal => The value that the field will be changed to.
+				   threadName => The name of the thread which are stopping at this breakpoint
+			   
+			   bp.temporay and bp.enable may be incorrect.			   
+			   Because they can be changed in the code of java code.
+		en 	 : The default is true.
+		temporay : The default is false.
+	
+	return id if success. Otherwise, return -1.
+
+* Location:
+	This is valid when stopping at a breakpoint.
+	Use Location to get the current location.
+	ex:
+		var loc = new Location()  => get the current Location
+		loc.thread 
+		loc.func   
+		loc.line
+		loc.bci
+
+* addStopEvent(func):
+	func: While program is interrupted (breakpoint, step event etc), func will be executed,  
+		  func(threadName)
+		  	threadName => The name of the thread which are being interrupted.	
+
+	return 0 if success. Otherwise, return -1. 	
+
+* removeStopEvent(func):
+	func: This must be the same as the func of addStopEvent.
+
+* addExitedEvent(func):	
+	func: While program exits (quit, program normally or abnormally exited), func will be executed,  
+		  func(cause)
+		  	cause => cause=1 , for using 'quit' command to exit
+		  			 cause=0 , Otherwise.
+	return 0 if success. Otherwise, return -1. 	
+
+* removeExitedEvent(func):
+	func: This must be the same as the func of addExitedEvent.	
+	
+
+(For javascript)
+* addJscommand(cmdstr, cmdabbrevstr, func, _completer, 
+				_override, _disconnected, _readonly):
+	Add a new script command. you can type cmdstr or cmdabbrevstr in command line of xjdb.
+
+	parameters:
+		cmdstr : the complete name of the command.
+		cmdabbrevstr : the abbreviation of the command.
+		func :  when type cmdstr or cmdabbrevstr in command line of jdb.
+				The arguments is collected behind the cmdstr or cmdabbrevstr.
+		
+		_completer: One of the following values. The default is -1.
+				  COMPLETER.NONE = -1;
+				  COMPLETER.FILES = 1;
+				  COMPLETER.CLASS_METHOD = 2;
+				  COMPLETER.CLASS = 3;
+				  COMPLETER.PRINT = 4;
+				  COMPLETER.THREADS = 5;
+				  
+		_override: to override any existed command. 
+				   The default is false.
+		_disconnected: The command can be used when VM is disconnected. 
+				   The default is true.
+		_readonly : The command is read-only command for a read-only VM connection. 
+				   The default is true; 
+
+	return 0 if success. Otherwise, return -1. 		  			 
+
+(For jython)
+* addPycommand(cmdstr, cmdabbrevstr, func, _completer, 
+				_override, _disconnected, _readonly):
+	Add a new script command. you can type cmdstr or cmdabbrevstr in command line of xjdb.
+
+	parameters:				
+		cmdstr : the complete name of the command.
+		cmdabbrevstr : the abbreviation of the command.
+		func :  when type cmdstr or cmdabbrevstr in read line of jdb.
+				The arguments is collected behind the cmdstr or cmdabbrevstr.
+		
+		_completer: One of the following values. The default is -1.
+				  COMPLETER.NONE = -1;
+				  COMPLETER.FILES = 1;
+				  COMPLETER.CLASS_METHOD = 2;
+				  COMPLETER.CLASS = 3;
+				  COMPLETER.PRINT = 4;
+				  COMPLETER.THREADS = 5;
+				  
+		_override: to override any existed command. 
+				   The default is False.
+		_disconnected: The command can be used when VM is disconnected. 
+				   The default is True.
+		_readonly : The command is read-only command for a read-only VM connection. 
+				   The default is True;
+
+		return 0 if success. Otherwise, return -1. 	
+
