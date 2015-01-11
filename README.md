@@ -50,7 +50,7 @@ The startup script is ".jdbrc.js" for javascript
 and ".jdbrc.py" for jython. They can be placed in user.home or user.dir.
 
 
-Breakpoints verification
+The verification of Breakpoints 
 =============
 When you use "break classId:num" command, xjdb take four steps 
 to verify if the line number in ClassId can be inserted a breakpoint 
