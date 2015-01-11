@@ -68,8 +68,9 @@ to verify if the line number in ClassId can be inserted a breakpoint
 For customed classloader, you can use "-classpath" 
 to let xjdb parse the desired classes in step 4.
 For remote debugging, for example, the java debugging of android, 
-"-classpath" can't be assigned, you can use "-xclasspath" in xjdb.
+"-classpath" can't be assigned, you can use "-xclasspath" in xjdb.  
 ex:
+
     "xjdb -xclasspath <path>/classes.jar ... " for android
 
 
