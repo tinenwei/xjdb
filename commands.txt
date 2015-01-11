@@ -199,7 +199,7 @@
 
 *backtrace:
   backtrace 	=> same as where. list call stacks.
-  backtrac /num	=> show the top num frames.
+  backtrace /num	=> show the top num frames.
 
   abbreviation: bt
 
@@ -233,9 +233,9 @@
   setp scrollsize size  => number of lines scrolled by PageUp/PageDown
   setp autosavebreak true/false
 			=> when using quit to exit xjdb, if save breakpoints
-  setp pagemode on/off  => PageUp/PageDown use pages or scrollsize 
-			   (F11 key to switch page mode)
-  setp port num 	=> There is socket server in xjdb 
+  setp pagemode on/off  => use PageUp/PageDown keys to scroll by pages or lines 
+			   (use F11 key to turn on/off page mode)
+  setp port num 	=> There is a socket server in xjdb 
 			   and it can receive message to enter command.
 			   This set port number of socket server.
 
