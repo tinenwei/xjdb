@@ -26,7 +26,7 @@ You can set prefix for your desired path:
 
     make install prefix=<path>. 
 
-Then you can use <path>/xjdb instead of jdb.
+Then you can use &lt;path&gt;/xjdb instead of jdb.
 
 The default script engine is javascript.
 For jython, you can use command: 
