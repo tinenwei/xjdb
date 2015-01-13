@@ -43,6 +43,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.io.*;
+import java.util.jar.JarInputStream;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 class SourceMapper {
 
@@ -57,12 +60,7 @@ class SourceMapper {
         Iterator iter = sourcepath.iterator();
         while (iter.hasNext()) {
             String element = (String)iter.next();
-            //XXX remove .jar and .zip files; we want only directories on
-            //the source path. (Bug ID 4186582)
-            if ( ! (element.endsWith(".jar") ||
-                    element.endsWith(".zip"))) {
-                dirList.add(element);
-            }
+            dirList.add(element);
         }
         dirs = (String[])dirList.toArray(new String[0]);
     }
@@ -81,12 +79,7 @@ class SourceMapper {
         List dirList = new ArrayList();
         while (st.hasMoreTokens()) {
             String s = st.nextToken();
-            //XXX remove .jar and .zip files; we want only directories on
-            //the source path. (Bug ID 4186582)
-            if ( ! (s.endsWith(".jar") ||
-                    s.endsWith(".zip"))) {
-                dirList.add(s);
-            }
+            dirList.add(s);
         }
         dirs = (String[])dirList.toArray(new String[0]);
     }
@@ -132,6 +125,46 @@ class SourceMapper {
         }
     }
 
+    BufferedReader sourceFileReader(Location loc) {
+        try {
+            String filename = loc.sourceName();
+            String refName = loc.declaringType().name();
+            int iDot = refName.lastIndexOf('.');
+            String pkgName = (iDot >= 0)? refName.substring(0, iDot+1) : "";
+            String full = pkgName.replace('.', File.separatorChar) + filename;
+            for (int i= 0; i < dirs.length; ++i) {
+                try {                
+                    if (dirs[i].endsWith(".jar") ||  dirs[i].endsWith(".zip")) {                       
+                        JarInputStream jarIn = new JarInputStream( new FileInputStream(dirs[i]));
+                        JarEntry entry = jarIn.getNextJarEntry();
+                        JarFile jfile = new JarFile(new File(dirs[i]));
+                        while (entry != null) {
+                            if (entry.getName().equals(full)) {
+                                InputStream filein =  jfile.getInputStream(entry);
+                                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(filein));
+                                return bufferedReader;
+                            }
+                        }
+            
+                    } else {
+                        File path = new File(dirs[i], full);
+                        if (path.exists()) {
+                             return new BufferedReader(new FileReader(path));
+                        }                    
+                    }
+                } catch (Exception e) {
+                    continue;
+                }
+                
+            }
+            return null;
+        } catch (AbsentInformationException e) {
+            return null;
+        }
+    }
+
+
+
     /**
      * Return a BufferedReader cooresponding to the source 
      * of this location.
@@ -139,15 +172,7 @@ class SourceMapper {
      * Note: returned reader must be closed.
      */
     BufferedReader sourceReader(Location loc) {
-        File sourceFile = sourceFile(loc);
-        if (sourceFile == null) {
-            return null;
-        }
-        try {
-            return new BufferedReader(new FileReader(sourceFile));
-        } catch(IOException exc) {
-        }
-        return null;
+        return  sourceFileReader(loc);
     }
 }
         
