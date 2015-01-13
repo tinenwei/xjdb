@@ -2366,6 +2366,10 @@ public class TTY implements EventNotifier, Service {
             
             sysResult.set(result);
             sysError.set(error);
+            if ( stdInput != null )
+                stdInput.close();
+            if ( stdError != null)
+                stdError.close();            
         }  catch (IOException e) {
             System.out.println("exception happened - here's what I know: ");
             e.printStackTrace();            
@@ -2393,7 +2397,10 @@ public class TTY implements EventNotifier, Service {
             executeCommand(new StringTokenizer(input));
             System.out.print(MessageOutput.promptString()); 
         } finally {
-            client.close();
+            if (client != null)
+                client.close();            
+            if (reader != null)
+                reader.close();
         }
     }
 }
