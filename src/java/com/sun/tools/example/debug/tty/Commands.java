@@ -1802,15 +1802,8 @@ class Commands {
             if (deleteAll) {                
                 Env.specList.deleteAll();
                 listBreakpoints();
-            }
-            
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (Exception exc) {
-                    // do nothing
-                }
-            }
+            }            
+
             return;
         }
         String breakpointNum = t.nextToken();
@@ -2596,15 +2589,8 @@ class Commands {
             if (clearAll) {
                 p.cmdList.clear();
                 p.cmdList = null;
-            }
-            
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (Exception exc) {
-                    // do nothing
-                }
             }            
+           
             System.out.println("clear command list sucessfully!!");
 
         }   
