@@ -1781,6 +1781,7 @@ class Commands {
     void commandDelete(StringTokenizer t) {
         if (!t.hasMoreTokens()) {
             String ans = "n";
+            boolean deleteAll = true;
             BufferedReader br =
                  new BufferedReader(new InputStreamReader(System.in));
 
@@ -1790,15 +1791,26 @@ class Commands {
             try {
                 ans = br.readLine();
             } catch(Exception e) {
-                System.out.println("Error while reading line from console : " + e);
-                return;
+                System.out.println("Error while reading line from console : " + e);              
+                deleteAll = false;
             }
 
-            if (ans.toLowerCase().equals("n"))
-                return;
-        
-            Env.specList.deleteAll();
-            listBreakpoints();
+            if (ans.toLowerCase().equals("n")) {
+                deleteAll = false;
+            }
+
+            if (deleteAll) {                
+                Env.specList.deleteAll();
+                listBreakpoints();
+            }
+            
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (Exception exc) {
+                    // do nothing
+                }
+            }
             return;
         }
         String breakpointNum = t.nextToken();
@@ -2563,6 +2575,7 @@ class Commands {
             System.out.println("commands: "+cmdLine);
         } else {
             String ans = "n";
+            boolean clearAll = true;
             BufferedReader br =
                  new BufferedReader(new InputStreamReader(System.in));
 
@@ -2572,15 +2585,26 @@ class Commands {
             try {
                 ans = br.readLine();
             } catch (Exception e) {
-                System.out.println("Error while reading line from console : " + e);
-                return;
+                System.out.println("Error while reading line from console : " + e);               
+                clearAll = false;
             }
 
-            if (ans.toLowerCase().equals("n"))
-                return;
+            if (ans.toLowerCase().equals("n")) {
+                clearAll = false;                
+            }
+
+            if (clearAll) {
+                p.cmdList.clear();
+                p.cmdList = null;
+            }
             
-            p.cmdList.clear();
-            p.cmdList = null;
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (Exception exc) {
+                    // do nothing
+                }
+            }            
             System.out.println("clear command list sucessfully!!");
 
         }   
@@ -3174,6 +3198,14 @@ class Commands {
                             Env.setSourcePath(paths);
                     } catch (Exception e) {
                         // do nothing
+                    } finally {
+                        if (inFile != null) {
+                            try {
+                                inFile.close();
+                            } catch (Exception exc) {
+                                // do nothing
+                            }
+                        }                          
                     }
                 }
             } else {             
