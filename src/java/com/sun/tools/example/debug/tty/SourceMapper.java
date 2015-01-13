@@ -155,7 +155,6 @@ class SourceMapper {
                 } catch (Exception e) {
                     continue;
                 }
-                
             }
             return null;
         } catch (AbsentInformationException e) {
