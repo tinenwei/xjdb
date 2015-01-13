@@ -1,4 +1,4 @@
-Whare is xjdb?
+What is xjdb?
 =============
 xjdb is a extension of jdb and the source code is a modification of jdb's source code. 
 The objective is to make jdb more convenient as gdb. 
