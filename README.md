@@ -44,7 +44,7 @@ How to use?
 The usage of new commands can refer commands.txt or type helpx in command line of xjdb.
 The usage of script can refer scriptAPI.txt.
 Also, You can refer ./script/js/init.js and ./script/js/jscmd.js for javascript 
-or refer ./script/py/init.py and ./script/py/pycmd.py for jython.
+or ./script/py/init.py and ./script/py/pycmd.py for jython.
 
 The startup script is ".jdbrc.js" for javascript
 and ".jdbrc.py" for jython. They can be placed in user.home or user.dir.
